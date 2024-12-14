@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>{{ action }} представление</h2>
+<form method="post">
+    {{ form.csrf_token }}
+    <div class="form-group">
+        {{ form.play_id.label }}
+        {{ form.play_id(class="form-control") }}
+    </div>
+    <div class="form-group">
+        {{ form.date_time.label }}
+        {{ form.date_time(class="form-control") }}
+        <small class="form-text text-muted">Формат: ГГГГ-ММ-ДДTчч:мм</small>
+    </div>
+    <div class="form-group">
+        {{ form.venue.label }}
+        {{ form.venue(class="form-control") }}
+    </div>
+    <div class="form-group">
+        {{ form.available_seats.label }}
+        {{ form.available_seats(class="form-control") }}
+    </div>
+    {{ form.submit(class="btn btn-primary") }}
+</form>
+{% endblock %}

@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Пьеса: {{ play.title }}</h2>
+<p><strong>Описание:</strong> {{ play.description }}</p>
+<p><strong>Жанр:</strong> {{ play.genre }}</p>
+<p><strong>Длительность:</strong> {{ play.duration }} мин.</p>
+{% endblock %}

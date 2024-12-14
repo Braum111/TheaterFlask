@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Профиль пользователя {{ user.username }}</h2>
+<p>Email: {{ user.email }}</p>
+
+<h3>Купленные билеты</h3>
+{% if tickets %}
+<table class="table">
+  <tr><th>Пьеса</th><th>Дата и время</th><th>Место</th><th>Цена</th><th>Дата покупки</th></tr>
+  {% for t in tickets %}
+  <tr>
+    <td>{{ t.play_title }}</td>
+    <td>{{ t.date_time }}</td>
+    <td>{{ t.venue }}</td>
+    <td>{{ t.price }}</td>
+    <td>{{ t.purchase_date }}</td>
+  </tr>
+  {% endfor %}
+</table>
+{% else %}
+<p>Нет купленных билетов.</p>
+{% endif %}
+
+<h3>Мои отзывы</h3>
+{% if reviews %}
+<ul>
+{% for r in reviews %}
+  <li><strong>{{ r.play_title }} ({{ r.date_time }}):</strong> Оценка: {{ r.rating }} - "{{ r.text }}" ({{ r.date_posted }})</li>
+{% endfor %}
+</ul>
+{% else %}
+<p>Вы не оставляли отзывов.</p>
+{% endif %}
+{% endblock %}

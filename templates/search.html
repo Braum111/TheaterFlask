@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Поиск пьес</h2>
+<form method="GET" action="{{ url_for('search') }}">
+  <div class="form-group">
+    <label>Ключевое слово в названии:</label>
+    <input type="text" name="keyword" class="form-control" value="{{ request.args.get('keyword', '') }}">
+  </div>
+  <div class="form-group">
+    <label>Жанр:</label>
+    <input type="text" name="genre" class="form-control" value="{{ request.args.get('genre', '') }}">
+  </div>
+  <button class="btn btn-primary" type="submit">Искать</button>
+</form>
+
+{% if plays is defined %}
+<h3>Результаты поиска:</h3>
+{% if plays %}
+  <ul>
+  {% for p in plays %}
+    <li>{{ p.title }} ({{ p.genre }})</li>
+  {% endfor %}
+  </ul>
+{% else %}
+  <p>Ничего не найдено.</p>
+{% endif %}
+{% endif %}
+{% endblock %}

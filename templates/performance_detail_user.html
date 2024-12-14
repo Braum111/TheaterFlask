@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>{{ performance.title }}</h2>
+<p><strong>Дата и время:</strong> {{ performance.date_time }}</p>
+<p><strong>Место:</strong> {{ performance.venue }}</p>
+<p><strong>Доступные места:</strong> {{ performance.available_seats }}</p>
+{% if session.user_id %}
+  <a href="{{ url_for('buy_ticket', performance_id=performance.performance_id) }}" class="btn btn-primary">Купить билет</a>
+{% else %}
+  <p>Для покупки билета необходимо <a href="{{ url_for('login') }}">войти</a></p>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Пьесы</h2>
+<ul>
+{% for play in plays %}
+  <li>
+    <a href="{{ url_for('play_detail', play_id=play.play_id) }}">{{ play.title }}</a> |
+    <a href="{{ url_for('play_performances', play_id=play.play_id) }}" >Посмотреть места</a>
+  </li>
+{% endfor %}
+</ul>
+{% if session.get('username') == 'admin' %}
+<div class="mt-4">
+    <a href="{{ url_for('add_play') }}" class="btn btn-success">Добавить новую пьесу</a>
+</div>
+{% endif %}
+{% endblock %}

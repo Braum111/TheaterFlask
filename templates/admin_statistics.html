@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Статистика для администратора</h2>
+
+
+<!-- Форма для средней цены билета -->
+<form method="post" class="form-inline mb-2">
+  <input type="hidden" name="stat_type" value="average_price">
+  <div class="form-group">
+    <label for="play_id_1" class="mr-2">Выберите пьесу:</label>
+    <select name="play_id" id="play_id_1" class="form-control mr-2">
+      {% for play in plays %}
+      <option value="{{ play.play_id }}">{{ play.title }}</option>
+      {% endfor %}
+    </select>
+  </div>
+  <button type="submit" class="btn btn-primary">Получить среднюю цену билета</button>
+</form>
+
+<!-- Форма для процента занятости мест -->
+<form method="post" class="form-inline mb-2">
+  <input type="hidden" name="stat_type" value="occupancy_rate">
+  <div class="form-group">
+    <label for="performance_id_1" class="mr-2">Выберите представление:</label>
+    <select name="performance_id" id="performance_id_1" class="form-control mr-2">
+      {% for perf in performances %}
+      <option value="{{ perf.performance_id }}">{{ perf.title }} ({{ perf.date_time }})</option>
+      {% endfor %}
+    </select>
+  </div>
+  <button type="submit" class="btn btn-primary">Получить процент занятости мест</button>
+</form>
+
+<!-- Форма для общего количества проданных билетов -->
+<form method="post" class="form-inline mb-2">
+  <input type="hidden" name="stat_type" value="total_sold">
+  <div class="form-group">
+    <label for="play_id_2" class="mr-2">Выберите пьесу:</label>
+    <select name="play_id" id="play_id_2" class="form-control mr-2">
+      {% for play in plays %}
+      <option value="{{ play.play_id }}">{{ play.title }}</option>
+      {% endfor %}
+    </select>
+  </div>
+  <button type="submit" class="btn btn-primary">Получить общее количество проданных билетов</button>
+</form>
+
+{% endblock %}

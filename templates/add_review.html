@@ -1,0 +1,17 @@
+<!-- templates/add_review.html -->
+{% extends "base.html" %}
+{% block content %}
+<h2>Оставить отзыв о театре</h2>
+<form method="post">
+    {{ form.hidden_tag() }}
+    <div>
+        {{ form.rating.label }} {{ form.rating }}
+    </div>
+    <div>
+        {{ form.text.label }} {{ form.text }}
+    </div>
+    <div>
+        {{ form.submit() }}
+    </div>
+</form>
+{% endblock %}
